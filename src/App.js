@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
 
 export default function DistritoForm() {
   const [distritos, setDistritos] = useState([]);
@@ -50,31 +51,11 @@ export default function DistritoForm() {
     }
   }, [selectedId, distritos]);
 
-  const checkConsistencia = () => {
-    const issues = [];
-    
-    if (Number(fields.masculino) + Number(fields.feminino) !== Number(fields.populacao_total)) {
-      issues.push('População total não coincide com a soma de masculino + feminino');
-    }
-    
-    if (Number(fields.urbano_masculino) + Number(fields.urbano_feminino) !== Number(fields.urbano_total)) {
-      issues.push('População urbana total não coincide com a soma de masculino + feminino urbano');
-    }
-    
-    if (Number(fields.rural_masculino) + Number(fields.rural_feminino) !== Number(fields.rural_total)) {
-      issues.push('População rural total não coincide com a soma de masculino + feminino rural');
-    }
-    
-    if (Number(fields.urbano_total) + Number(fields.rural_total) !== Number(fields.populacao_total)) {
-      issues.push('População total não coincide com a soma de urbano + rural');
-    }
-    
-    return issues;
-  };
+ 
 
-  const inconsistencias = checkConsistencia();
 
   return (
+    <section class='secao' id='conte'>
    <div className="p-6 max-w-6xl mx-auto bg-white rounded-xl shadow-lg">
   {/* Título principal */}
   <div className="mb-8">
@@ -84,9 +65,9 @@ export default function DistritoForm() {
 
   {/* Dropdown de seleção */}
   <div className="mb-8">
-    <label className="block text-sm font-medium text-gray-700 mb-3">Distrito</label>
+    <label id='label' className="block text-sm font-medium text-gray-700 mb-3">Distrito</label>
     <select
-      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+      className=" w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
       value={selectedId}
       onChange={e => setSelectedId(e.target.value)}
     >
@@ -105,9 +86,10 @@ export default function DistritoForm() {
         <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-4">
           <h3 className="text-lg font-semibold text-gray-700 mb-2">Informações Básicas</h3>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">Nome do Distrito</label>
+          <div class='content'>
+            <label id='label' className=" text-center block text-sm font-medium text-gray-600 mb-1">Nome do Distrito</label>
             <input
+            id='input'
               type="text"
               className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
               value={fields.nome}
@@ -116,8 +98,9 @@ export default function DistritoForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">Área (km²)</label>
+            <label  id='label' className="block text-sm font-medium text-gray-600 mb-1">Área (km²)</label>
             <input
+             id='input'
               type="text"
               className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
               value={fields.area_km2}
@@ -131,8 +114,9 @@ export default function DistritoForm() {
           <h3 className="text-lg font-semibold text-gray-700 mb-2">População Geral</h3>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">Total</label>
+            <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Total</label>
             <input
+             id='input'
               type="text"
               className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
               value={fields.populacao_total}
@@ -142,8 +126,9 @@ export default function DistritoForm() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
+              <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.masculino}
@@ -151,8 +136,9 @@ export default function DistritoForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Feminino</label>
+              <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Feminino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.feminino}
@@ -167,8 +153,9 @@ export default function DistritoForm() {
           <h3 className="text-lg font-semibold text-gray-700 mb-2">Zona Urbana</h3>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">Total</label>
+            <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Total</label>
             <input
+             id='input'
               type="text"
               className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
               value={fields.urbano_total}
@@ -178,8 +165,9 @@ export default function DistritoForm() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
+              <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.urbano_masculino}
@@ -187,8 +175,9 @@ export default function DistritoForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Feminino</label>
+              <label  id='label' className="block text-sm font-medium text-gray-600 mb-1">Feminino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.urbano_feminino}
@@ -206,8 +195,9 @@ export default function DistritoForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Total</label>
+              <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Total</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.rural_total}
@@ -215,8 +205,9 @@ export default function DistritoForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
+              <label id='label' className="block text-sm font-medium text-gray-600 mb-1">Masculino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.rural_masculino}
@@ -224,8 +215,9 @@ export default function DistritoForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">Feminino</label>
+              <label  id='label' className="flex text-lg font-medium text-gray-600 mb-1">Feminino</label>
               <input
+               id='input'
                 type="text"
                 className="w-full px-3 py-2 bg-gray-100 rounded border border-gray-300"
                 value={fields.rural_feminino}
@@ -236,25 +228,10 @@ export default function DistritoForm() {
         </div>
       </div>
 
-      {/* Validações */}
-      {inconsistencias.length > 0 && (
-        <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded-lg">
-          <div className="flex items-center">
-            <svg className="w-5 h-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
-            </svg>
-            <h4 className="text-red-600 font-medium">Atenção: Inconsistências encontradas</h4>
-          </div>
-          <ul className="mt-2 text-red-500 text-sm list-disc list-inside">
-            {inconsistencias.map((msg, i) => (
-              <li key={i}>{msg}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+     
     </div>
   )}
 </div>
-
+</section>
   );
 }
