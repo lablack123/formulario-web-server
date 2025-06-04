@@ -55,10 +55,11 @@ h1::after {
 /* Formulários modernos */
 label {
   display: block;
-  margin: 1.5rem 0 0.5rem;
+  margin-bottom: 0.5rem; /* Espaço entre a label e o input */
   font-weight: 500;
-  color: var(--text);
-  font-size: 0.95rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  text-align: left; /* Alinha as labels à esquerda */
 }
 
 select, input {
@@ -71,6 +72,16 @@ select, input {
   font-size: 1rem;
   transition: all 0.3s ease;
   background-color: var(--white);
+}
+
+input {
+  width: 80%; /* Reduz a largura dos inputs */
+  font-size: 0.95rem;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--background);
+  margin: 0 auto; /* Centraliza os inputs */
 }
 
 select:focus, input:focus {
@@ -116,10 +127,83 @@ select:hover {
 }
 #input{
     text-align: center;
-
+    width: 50%;
 }
 #label{
 }
 .content{
   
+}
+
+#titulo{
+  background-color: #2b2d42;
+  margin-top: -4%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.mb-8{
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+#selection {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.mb-2{
+  color: #5f7392;
+  font-size: 4rem;
+}
+
+.text-3xl{
+  color: #e6f0ff;
+  font-size: 4rem;
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.input {
+  text-align: center;
+}
+
+
+.text-gray-600{
+  color: #fcfdff;
+  font-size: 1.2rem;
+}
+
+label {
+  margin-left: 4rem;
+  font-size: 1.2rem;
+  color: #5f7392 !important;
+  margin-top: 4%;
+}
+
+.footer {
+  background-color: #2b2d42;
+  color: #e6f0ff;
+  padding: 1rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  z-index: 1000;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  left: 0;
+  right: 0;
+  animation: fadeIn 0.4s ease-out;
 }
